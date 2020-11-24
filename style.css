@@ -1,0 +1,261 @@
+/* réglage css */
+/* charte en bleu avec la couleur bleu #0065fc*/
+/* version plus clair pour les icones #deebff*/
+/* gris pour le fond #F2f2f2*/
+
+/* 1em=16 px / rem fait reference à la taille de la police ou élement parent.*/
+body {
+  font-family: "Raleway", sans-serif;
+  font-size: 1rem;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1 {
+  font-size: 1.4rem;
+}
+/* réglage géneral de la nav avant la partie mobile, tablette*/
+
+.header {
+  display: grid; /*propriété grid qui permet de positionné des grilles/colonnes*/
+  align-items: center;
+  max-width: 1440px;
+  margin: auto;
+}
+
+.logohaut {
+  grid-area: logo; /*propriété qui pêrmet de définir la taille du logo sur la grille et son emplacement*/
+  padding: 0 2rem;
+  height: 2.813rem; /*hauteur logo reservia*/
+}
+.headerNav {
+  display: flex;
+  align-items: center;
+  grid-area: navbar;
+}
+.headerNavBar {
+  padding: 2rem; /*padding heber acti*/
+  font-weight: 500;
+  text-align: center;
+  transition-duration: 0.1s;
+  border-top: 3px transparent solid; /* bordure du haut*/
+  border-bottom: 3px transparent solid; /* elle apparait au changement de taille d'ecran */
+}
+.headerNavBar[data-active="true"] /* une bordure apparait uniquement quand ont cible le boutton activité*/ {
+  color: #0065fc;
+}
+
+.headerNavBar:hover {
+  /* héber et acti deviennent bleu au survol*/
+  color: #0065fc;
+}
+.headerInscrire {
+  display: flex;
+  align-items: center;
+  grid-area: button;
+  padding: 2rem;
+  color: #0065fc;
+  font-weight: 600;
+}
+
+@media screen and (min-width: 601px) {
+  /* affichage  sur ecran minimum jusqu'a 601 px*/
+  .header {
+    grid-template-columns: auto 1fr auto auto; /* (4colonnes logo placé de facon  auto avec 1 fraction sur ma 2eme case et nav bar placé automatiquement*/
+    grid-template-areas: "logo . navbar button"; /* grille nommé (reservia hébergement-acti et s'incrire)*/
+  }
+
+  .headerNavBar[data-active="true"] {
+    /* bordure en haut de ma nav hébergement , elle reste fix*/
+    border-top: 3px solid #0065fc;
+  }
+  .headerNavBar:hover {
+    border-top: 3px solid #0065fc;
+  }
+}
+@media screen and (max-width: 600px) {
+  /* largeur minimum en dessous de 600px */
+  .header {
+    grid-template-columns: auto 1fr auto; /* colonne de ligne positionné de maniere automatique avec 1 fraction */
+    grid-template-areas: "logo . button" "navbar navbar navbar";
+  }
+
+  .logohaut {
+    /* ordre du positionnement du logo 0, inscription 1 et de la nav hébergement/activité en 2*/
+    order: 0;
+  }
+  .headerInscrire {
+    order: 1;
+  }
+
+  .headerNav {
+    order: 2;
+  }
+
+  .headerNavBar {
+    border-top: none;
+    border-bottom: 3px solid #f2f2f2;
+    width: 50%; /* largeur prise sur le contenu entre l'activité et la bordure*/
+  }
+  .headerNavBar [data-active="true"] {
+    border-bottom-color: #0065fc;
+  }
+
+  .headerNavBar:hover {
+    border-bottom-color: #0065fc;
+  }
+}
+
+.main /* contenu majoritaire du body */ {
+  max-width: 1440px;
+  margin: auto; /* marge sur tout les côtés de ma page*/
+  padding: 0rem 2rem;
+  box-sizing: border-box; /* sizing va défini la facon dont la hauteur et la largeur sont calculé et border box cet propriété facilite la taille des élements */
+}
+
+.searchHeaderTitre {
+  margin-bottom: 0.4rem; /* marge défini entre le h1 et le paraphe*/
+}
+.searchHeaderSoutitre {
+  margin-top: 0;
+}
+
+.searchForm {
+  display: inline-flex; /* élement en ligne*/
+  width: 100%;
+  overflow: auto; /* overflow gére le contenue si il est dépassé par le nbre de caractère*/
+}
+
+.searchFormicon {
+  /*iconlocalisation*/
+  background-color: #f2f2f2;
+  padding: 1rem 1.25rem;
+  border-radius: 1rem 0 0 1rem;
+  text-align: center;
+}
+
+.searchFormiconIcon {
+  margin-left: 0.1rem;
+}
+
+.RechercheForminput {
+  border-right: none;
+  border-left: none;
+  border-top: #f2f2f2 1px solid; /* bordure haut / bas *marseille, france*/
+  border-bottom: #f2f2f2 1px solid;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+  width: 14rem;
+  font-weight: bold;
+  font-size: 1rem;
+  font-family: "Raleway", "Sans serif";
+}
+
+.RechercheForminput::placeholder {
+  font-family: "Raleway", "Sans serif";
+  font-size: 1rem;
+  color: #808080;
+}
+
+.BarSubmitinput {
+  /* bar rechercher*/
+  background-color: #0065fc;
+  color: white;
+  border-radius: 0 1rem 1rem 0; /* en partant du bas vers la droite*/
+  padding: 0 1.5rem;
+  font-weight: bold;
+  font-size: 1rem;
+  font-family: "Raleway", "Sans serif";
+  cursor: pointer; /* curseur au survol sur la bar rechercher*/
+}
+/*____________________________________________*/
+/*FILTRE*/
+
+.Filtre {
+  display: flex;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+.TitreFiltre {
+  /*titre filtre*/
+  margin: 0 2rem 1rem 0; /*marge entre mes catégories*/
+  display: flex;
+  align-items: center;
+}
+.CatFiltre {
+  /* reglage de mes catégorie*/
+  display: flex;
+  align-items: center;
+  margin-right: 2rem;
+  border: 2px solid #d9d9d9; /* bordure grise des filtres*/
+  border-radius: 2rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition-duration: 0.1s;
+  font-weight: bold;
+}
+.CatFiltre:last-child {
+  /* cible mon derniere élement du parent*/
+  margin-right: 0;
+}
+.CatFiltre:hover {
+  background-color: #f2f2f2; /* ajoute une couleur au survol sur mes filtres*/
+  transform: scale (1.015);
+  /* met un effet au survol sur les filtres avec la propriété choisi (source mozilla) */
+}
+
+.FiltreIcon {
+  /* réglage des icones*/
+  background-color: #deebff;
+  border-radius: 100%;
+  height: 3rem; /* hauteur de l'espace border radius en bleu clair */
+  width: 3rem; /* largeur de l'espace border radius en bleu clair */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: -2px;
+}
+.CatégorieIcone {
+  /*couleur des icones*/
+  color: blue;
+}
+.FiltreParClass {
+  /* marge entre les catégories*/
+  margin: 0 1rem;
+}
+/* espace information */
+.InfomationCat {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0 2rem 0;
+}
+
+.searchInformation {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0 2rem 0;
+}
+.searchInformationWrapicon {
+  height: 2rem; /* réglage bulle en hauteur*/
+  width: 2rem; /* réglage bulle info largeur*/
+  /* min-height: 2rem;
+  min-width: 2rem; */
+  border: solid 1px #d9d9d9;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+}
+.searchInformationWrapiconIcon {
+  color: #0065fc;
+}
+.searchInformationText {
+  margin: 0;
+}
+/* fin du filtre et information*/
